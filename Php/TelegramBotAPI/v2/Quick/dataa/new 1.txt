@@ -1,0 +1,65 @@
+<?php
+
+elseif($textmessage == "چالش سرعتی"){
+$user["step"] = "chalshs";
+$outjson = json_encode($user,true);
+file_put_contents("data/$from_id.json",$outjson);
+ bot('sendmessage',[
+ 'chat_id'=>$chat_id,
+ 'text'=>"
+برای ساخت چالش سرعتی تایید کنید
+توجه اگه قبلا چالشی ساختید لینک چالش قبلی حذف میشود و دیگر کار نمیکند!
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$taedchls,
+ ]);
+ }
+elseif($step == "chalshs" && $textmessage != "🔙"){
+if($textmessage == "تایید"){
+$txtmaaaaass = "$chat_id";
+file_put_contents("cmd/$passs.txt",$txtmaaaaass);
+bot('sendmessage',[
+ 'chat_id'=>$chat_id,
+ 'text'=>"
+لینک شما ساخته شد
+https://t.me/QuickRuBot?start=$passs
+هر که زودتر لینک را باز کند و ربات را استارت کند به شما اطلاع داده میشود
+توجه کنید که ربات هیچ تبلیغاتی ندارد
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$first,
+ ]);
+}
+}
+if(strpos($textmessage,"/start") !== false  && $textmessage !="/start"){
+	$txtmasfdaaaass = "true";
+file_put_contents("cmd/$iiisd.txt",$txtmasfdaaaass);
+$iiisd=str_replace("/start ","",$textmessage);
+if(file_exists("cmd/$iiisd.txt")){
+$onnnncb=file_get_contents("cmd/$iiisd.txt");
+if ($onnnncb == "true"){
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"یس یس",
+'parse_mode'=>"MARKDOWN",
+]);
+}
+}else{
+	bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"دیر رسیدی",
+'parse_mode'=>"MARKDOWN",
+]);
+}
+}else{
+	bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"یافت نشد",
+'parse_mode'=>"MARKDOWN",
+]);
+}
+}
+//----------------------------
+?>

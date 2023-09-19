@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 4s linear,color 4s linear;
+}
+body {
+    border-image: linear-gradient(to right,var(--gradient)) 1;
+    border-style: solid;
+    border-width: 7px 7px 7px;
+    color: var(--color-on-background);
+  }
+html{
+    background: #800080;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffc0cb, #800080);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc0cb, #800080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.toggle-c{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+.dark{
+    background: #000000;
+    color: #FFF;
+    --color-primary: #000000;
+    --color-secondary: #150050;
+    --color-yellow: #3F0071;
+    --color-green: #FB2576;
+    --color-blue: #00bbcb;
+    --gradient: var(--color-secondary) 10%,var(--color-yellow) 25%,var(--color-green) 50%,var(--color-blue) 75%,var(--color-primary) 90%;
+}

@@ -1,0 +1,7 @@
+[06-Jul-2022 10:00:54 UTC] PHP Warning:  include(jdf.php): failed to open stream: No such file or directory in /home/clevere1/public_html/service/service.php on line 40
+[06-Jul-2022 10:00:54 UTC] PHP Warning:  include(jdf.php): failed to open stream: No such file or directory in /home/clevere1/public_html/service/service.php on line 40
+[06-Jul-2022 10:00:54 UTC] PHP Warning:  include(): Failed opening 'jdf.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/clevere1/public_html/service/service.php on line 40
+[06-Jul-2022 10:00:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function jdate() in /home/clevere1/public_html/service/service.php:41
+Stack trace:
+#0 {main}
+  thrown in /home/clevere1/public_html/service/service.php on line 41

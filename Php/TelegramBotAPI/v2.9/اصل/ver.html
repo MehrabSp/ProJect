@@ -1,0 +1,81 @@
+﻿<?php
+//--------------------------------------------------------------------
+$update = json_decode(file_get_contents('php://input'));
+if(isset($update)){
+    $telegram_ip_ranges = [['lower' => '149.154.160.0', 'upper' => '149.154.175.255'],['lower' => '91.108.4.0','upper' => '91.108.7.255'],];
+    $ip_dec = (float) sprintf("%u", ip2long($_SERVER['REMOTE_ADDR'])); $ok = false;
+        foreach ($telegram_ip_ranges as $telegram_ip_range) if (!$ok) {
+            $lower_dec = (float) sprintf("%u", ip2long($telegram_ip_range['lower']));
+            $upper_dec = (float) sprintf("%u", ip2long($telegram_ip_range['upper']));
+                if ($ip_dec >= $lower_dec and $ip_dec <= $upper_dec) $ok = true;
+        }
+    if (!$ok) die("<center>
+<p>دسترسی شما به این صفحه مجاز نیست</p>
+</center>"); 
+}
+//---------------------------------------------------------------------------------
+$ses = $_GET["p"];
+$sos = $_GET["d"];
+if($sos != "np"){
+?>
+    <meta http-equiv='refresh' content='1;url=payed.php?p=<?php echo "$ses";?>'>
+    <html dir='rtl'>
+
+    <head>
+        <link rel='shortcut icon' href='images/favicon.png' type='image/x-icon'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Tm Quick | درحال انتقال ...</title>
+        <link rel='stylesheet' href='css/2/bootstrap.min.css'>
+        <style type='text/css'>
+            .sep {
+                margin: 10px 0px;
+                padding: 12px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class='sep'>
+            <button class='btn btn-primary' style='height: 4rem;' type='button' disabled="">
+<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
+در حال انتقال به درگاه، لطفا منتظر بمانید...
+</button>
+        </div>
+
+    </body>
+
+    </html>
+    <?php
+}else{
+?>
+        <meta http-equiv='refresh' content='1;url=payer.php?p=<?php echo "$ses";?>'>
+        <html dir='rtl'>
+
+        <head>
+            <link rel='shortcut icon' href='images/favicon.png' type='image/x-icon'>
+            <meta name='viewport' content='width=device-width, initial-scale=1'>
+            <title>Tm Quick | درحال انتقال ...</title>
+            <link rel='stylesheet' href='css/2/bootstrap.min.css'>
+            <style type='text/css'>
+                .sep {
+                    margin: 10px 0px;
+                    padding: 12px;
+                    text-align: center;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class='sep'>
+                <button class='btn btn-primary' style='height: 4rem;' type='button' disabled="">
+<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
+در حال انتقال به درگاه، لطفا منتظر بمانید...
+</button>
+            </div>
+
+        </body>
+
+        </html>
+        <?php
+}

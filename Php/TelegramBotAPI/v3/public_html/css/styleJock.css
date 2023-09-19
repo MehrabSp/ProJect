@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+
+body {
+  margin: 2rem 10rem;
+  min-height: 30vh;
+  background-color: #D8DCD6;
+  font-family: 'PT Serif', serif;
+}

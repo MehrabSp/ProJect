@@ -1,0 +1,59 @@
+https://api.codebazan.ir/telegram/?type=sin&channel=codebazan&message_id=300 سینhttps://api.codebazan.ir/num/?num=50000 حروف
+https://api.codebazan.ir/chistan/ چیستان
+https://api.codebazan.ir/vajehyab/?text=%D9%85%DB%8C%D8%AE وازه 
+https://api.codebazan.ir/esm-famil/?text=%D9%85 اسم و فامیل
+//----------
+وبسرویس کرونجاب دیگه لازم نیست هر دفه برای کرونجاب کردن برین تو سایت کرونجاب و …کافیه یکبار تو سایتش ثبت نام کنید و ایمیل و پسوورد سایت کرونجابز تو لینک زیر جاساز کنید و از کرونجاب کردن لذت ببرید.جای کارکتر های با حروف بزرگ اطلاعات خودتونو جایگرین کنید و جای تایم از ۱-۵-۱۰-۱۵-۳۰ استفاده کنید.
+https://api.codebazan.ir/cron-job/?mail=TESTMAIL@GMAIL.COM&pass=PASSWORD&link=LINK&title=TITLE&time=TIME
+//----------
+
+https://api.codebazan.ir/weather/?city=%D8%B3%D8%A7%D8%B1%DB%8C اب و هوا
+//----------
+
+وبسرویس ترجمه متن – مترجم وبسرویس متصل به مترجم گوگل میباشد شما میتوانید با این وبسرویس متن های طولانی خود را ترجمه و با خروجی جیسون دریافت نمایید.
+
+http://api.codebazan.ir/lang/google/?FROM=en&TO=fa&TEXT=hello
+
+وبسرویس ترجمه متن – مترجم به ۹ زبان دنیا به دلیل متصل بودن این وبسرویس به سایت translate.yandex.net و پولی شدن ترجمه در این سایت وبسروی لینک دوم و سوم از کار افتاد از وب سرویس مترجم گوگل استفاده کنید.
+
+http://api.codebazan.ir/lang/json/?matn=mobile
+
+خروجی لینک بالا  جیسون که ۹ زبان به صورت یکجا ترجمه میکنه و خروجی میده
+
+http://api.codebazan.ir/lang/?lang=fa&matn=laptop
+
+خروجی لینک بالا بصورت ساده و تنها زبانی که در لینک جاساز بشه رو چاپ میکنه 
+
+زبانها عبارتند از : fa,en,fr,ru,ar,zh,ja,de,es
+//---------------
+
+فونت
+http://api.codebazan.ir/font/?text=mamad
+https://api.codebazan.ir/font/?type=fa&text=%D9%85%D8%AD%D9%85%D8%AF فارسی فونت
+//--------
+کاملترین وبسرویس جوک با ۵۰۰۰ جوک کاربردی و جالب دارای خروجی جیسون و معمولی کاربردی ترین وبسرویس جوک میباشد.
+
+http://api.codebazan.ir/jok/
+
+خروجی جیسون
+
+https://api.codebazan.ir/jok/json/
+
+http://api.codebazan.ir/hadis/
+
+http://api.codebazan.ir/age/?year=1371&&month=08&&day=08
+
+http://api.codebazan.ir/whois/index.php?type=json&domain=www.codebazan.ir
+
+http://api.codebazan.ir/instagram/?id=mamad_tabarsi
+
+
+//---------
+وبسرویس رمزگذاری و رمزگشایی BrainFuck با این وب سرویس متن ها و … را بصورت کد در بیاورید نمونه متن کد شده را میتوانید در زیر ببینید.
+
+https://api.codebazan.ir/brainfuck/index.php?type=encoder&text=matn
+
+رمزگشایی متن کد شده با قرار دادن در ادرس بعدی
+
+https://api.codebazan.ir/brainfuck/index.php?type=decoder&text=+++++++++++++++++++++++++++++++++++++++.>
+//--------

@@ -1,0 +1,490 @@
+// code for => chatGPT
+
+<?php
+  // Set the maximum execution time to unlimited
+  set_time_limit(0);
+
+  // Start the search operation
+  $search_result = search_operation();
+
+  function load()
+  {
+    $load = '<div class="load"><hr /><hr /><hr /><hr /></div>
+    ';
+    echo $load;
+  }
+  // Function to perform the search operation
+
+  function search_operation()
+  {
+    // Initialize the progress bar
+    $total_items = 1000;
+    $current_item = 0;
+
+    // Loop through the items to be searched
+    for ($i = 1; $i <= $total_items; $i++) {
+      if ($i == 1) {
+        load();
+      }
+      // Perform the search operation on each item
+      $current_item++;
+      $percent_complete = round(($current_item / $total_items) * 100);
+      if ($percent_complete == 100) {
+        // echo '<script>document.querySelector(".load").remove();</script>';
+        break;
+      }
+      ob_flush();
+      flush();
+    }
+
+    // Return the search result
+    // return "Search completed successfully.";
+  }
+  ?>
+
+
+
+
+
+
+  ///
+
+
+
+
+
+
+
+  bootstrap nav
+
+body {
+background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+main {
+padding-left: 240px;
+}
+}
+
+/* Sidebar */
+.sidebar {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+padding: 58px 0 0; /* Height of navbar */
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+width: 240px;
+z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+.sidebar {
+width: 100%;
+}
+}
+.sidebar .active {
+border-radius: 5px;
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+position: relative;
+top: 0;
+height: calc(100vh - 48px);
+padding-top: 0.5rem;
+overflow-x: hidden;
+overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+
+
+
+
+
+
+
+
+
+ <!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-lock fa-fw me-3"></i><span>Password</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-globe fa-fw me-3"></i><span>International</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-building fa-fw me-3"></i><span>Partners</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-users fa-fw me-3"></i><span>Users</span></a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Sales</span></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo"
+          loading="lazy" />
+      </a>
+      <!-- Search form -->
+      <form class="d-none d-md-flex input-group w-auto my-auto">
+        <input autocomplete="off" type="search" class="form-control rounded"
+          placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+      </form>
+
+      <!-- Right links -->
+      <ul class="navbar-nav ms-auto d-flex flex-row">
+        <!-- Notification dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-bell"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Icon -->
+        <li class="nav-item">
+          <a class="nav-link me-3 me-lg-0" href="#">
+            <i class="fas fa-fill-drip"></i>
+          </a>
+        </li>
+        <!-- Icon -->
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+
+        <!-- Icon dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="united kingdom flag m-0"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English
+                <i class="fa fa-check text-success ms-2"></i></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Avatar -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+            id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+              height="22" alt="Avatar" loading="lazy" />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="#">My profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Settings</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px;">
+  <div class="container pt-4"></div>
+</main>
+<!--Main layout-->
+
+
+
+
+
+
+
+
+
+
+
+// ul and li 
+
+
+
+
+<div class="scrollable-list">
+                    <ul class="list-group gallery-view list-group-light">
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 4 - Pop - Demo 4</li>
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 5 - Jazz - Demo 5</li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <img src="image/pic_main_mobile/6.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                          <div class="ms-3">
+                            <p class="fw-bold mb-1">John Doe</p>
+                            <p class="text-muted mb-0">john.doe@gmail.com</p>
+                          </div>
+                        </div>
+                        <a class="btn btn-link btn-rounded btn-sm" href="#" role="button">View</a>
+                      </li>
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 7 - Country - Demo 7</li>
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 8 - Hip Hop - Demo 8</li>
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 9 - R&B - Demo 9</li>
+                      <li class="list-group-item"><img src="image/space_.png" class="round-photo"> Song 10 - Indie - Demo 10</li>
+                    </ul>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+//new
+
+  <!-- <link rel="stylesheet" href="style/dark-mode.css?v=2"> -->
+
+
+body
+  <!-- <p><span class="error"></span></p> -->
+  <!-- <img src="https://0.gravatar.com/avatar/2cf4b53ed232f50a6665fc9ca7da2975?s=32&amp;d=mm&amp;r=g&amp;s=24" class="avatar avatar-24 photo rounded-circle"> -->
+
+
+
+form login
+
+<!-- <div class="text-center mb-3">
+                        <p>Sign up with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-facebook-f"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-google"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-twitter"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-github"></i>
+                        </button>
+                      </div> -->
+
+
+<!-- <div class="form-check d-flex justify-content-center mb-4">
+                        <input class="form-check-input" name="remember_up" type="checkbox" id="inlineFormCheck2" checked />
+                        <label class="form-check-label" for="inlineFormCheck2">
+                          Remember me
+                        </label>
+                      </div> -->
+
+
+
+
+theme
+
+<!-- document.querySelector('.test-color').style.background -->
+          <!-- <div class="p-3 mb-2 bg-primary bg-gradient text-white">.bg-primary.bg-gradient</div>
+          <div class="p-3 mb-2 bg-secondary bg-gradient text-white">.bg-secondary.bg-gradient</div>
+          <div class="p-3 mb-2 bg-success bg-gradient text-white">.bg-success.bg-gradient</div>
+          <div class="p-3 mb-2 bg-danger bg-gradient text-white">.bg-danger.bg-gradient</div>
+          <div class="p-3 mb-2 bg-warning bg-gradient text-dark">.bg-warning.bg-gradient</div>
+          <div class="p-3 mb-2 bg-info bg-gradient text-dark">.bg-info.bg-gradient</div>
+          <div class="p-3 mb-2 bg-light bg-gradient text-dark">.bg-light.bg-gradient</div>
+          <div class="p-3 mb-2 bg-dark bg-gradient text-white">.bg-dark.bg-gradient</div> -->
+
+
+        <!-- <progress id="progress-bar" value="0" max="100" style="width:100%"></progress> -->
+
+
+search
+<!-- <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onchange="showHint(this.value)" />
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+            </span>
+          </div> -->
+
+
+//   let form = document.querySelector("form");
+    // form.addEventListener("submit", e => {
+    //     e.preventDefault()
+    // });
+
+
+
+//     const links = document.querySelectorAll('sidenav-link');
+
+    // links.forEach(link => {
+    //   link.addEventListener('click', (event) => {
+    //     event.preventDefault(); // prevent the default behavior of the link
+
+    //     const text = link.textContent; // get the text content of the link
+    //     window.location.href = '?dark_mode=' + text;
+
+    //     console.log(text); // log the text to the console or do something else with it
+    //   });
+    // });
+
+
+
+dark mode js
+
+
+// var toggl = $(this);
+  // toggl.addClass('scaling');
+  // setTimeout(function () {
+  //   toggl.removeClass('scaling');
+  // }, 520);
+// $(document).ready(function() {
+  // Check if user has selected dark mode
+//   var darkMode = localStorage.getItem('dark_mode');
+//   if (darkMode === 'true') {
+//     $('body').addClass('dark');
+//   } else {
+//     $('body').removeClass('dark');
+//   }
+
+//   // Add a button to toggle dark mode
+//   $('.mode').click(function() {
+//     // Toggle dark mode preference
+//     var darkMode = localStorage.getItem('dark_mode');
+//     if (darkMode === 'true') {
+//       localStorage.setItem('dark_mode', 'false');
+//       $('body').removeClass('dark');
+//     } else {
+//       localStorage.setItem('dark_mode', 'true');
+//       $('body').addClass('dark');
+//     }
+//   });
+// });
+
+
+
+// post js
+
+
+
+// function SubmitFormData() {
+//     var name = $("#form8Example1").val();
+//     var email = $("#form8Example2").val();
+//     var password = $("#registerPassword").val();
+//     var passrpt = $("#registerRepeatPassword").val();
+//     var gender = $(".form-check input[type=radio]:checked").val();
+//     $.post("ms.php", { type: 'signup', name: name, email: email, password: password, passrpt: passrpt, gender: gender },
+//     function(data) {
+// 	 $('.error').html(data);
+// 	 $('#myForm')[0].reset();
+//     });
+// }
+// function SubmitFormLogin() {
+//     var email = $("#loginName").val();
+//     var password = $("#loginPassword").val();
+//     var remember = $("#rememberCheck").val();
+//     $.post("ms.php", { type: 'login', email: email, password: password, remember: remember },
+//     function(data) {
+// 	 $('.error').html(data);
+// 	 $('#myForm1')[0].reset();
+//     });
+// }
+
+
+// :( 
+
+   /*class Utils {
+    static randomInt(min = 0, max = 2 ** 32) {
+      const percent = crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32;
+      const relativeValue = (max - min) * percent;
+
+      return Math.round(min + relativeValue);
+      console.log(Math.round(min + relativeValue))
+    }
+  }
+  if (Utils.randomInt(0, 2) === 0) {
+            this.fail();
+            console.log("fail");
+            return;
+          }*/

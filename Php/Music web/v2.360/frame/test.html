@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background: black;
+        }
+        .cnt{
+            position: fixed;
+            top: 31%;
+left: 43%;
+        }
+        .logo-container {
+width: 200px;
+  transform: translate(-50%, -50%);
+  animation: logo-animation 4s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes logo-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    filter: brightness(50%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: brightness(150%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+    filter: brightness(50%);
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="cnt">
+        <img class="logo-container" src="image/Quick-light.png" alt="">
+    </div>
+    
+</body>
+</html>

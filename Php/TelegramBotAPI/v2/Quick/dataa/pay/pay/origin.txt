@@ -1,0 +1,28 @@
+Uri: https://seenbot.otpserver.net/
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\index.htm
+Content Type: text/html
+
+Uri: https://seenbot.otpserver.net/IRANSans-web.eot
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\IRANSans-web.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://seenbot.otpserver.net/IRANSans-web.eot?
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\IRANSans-web-1.eot
+Content Type: application/vnd.ms-fontobject
+
+Uri: https://seenbot.otpserver.net/IRANSans-web.woff2
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\IRANSans-web.woff2
+Content Type: font/woff2
+
+Uri: https://seenbot.otpserver.net/IRANSans-web.woff
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\IRANSans-web.woff
+Content Type: font/woff
+
+Uri: https://seenbot.otpserver.net/IRANSans-web.ttf
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\IRANSans-web.ttf
+Content Type: font/ttf
+
+Uri: https://seenbot.otpserver.net/style.css
+File Name: C:\Users\vichba\Documents\Desktop\New folder (2)\seenbot.otpserver.net\style.css
+Content Type: text/css
+

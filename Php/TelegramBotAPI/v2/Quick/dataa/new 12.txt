@@ -1,0 +1,147 @@
+//---------------------------------------------------------------------------------
+/**********
+elseif($update->message->text && $update->message->reply_to_message && $chat_id == $admin and $textmessage == "تایید"){
+    $mr_artan = $update->message->reply_to_message->text;
+  bot('sendmessage',[
+        'chat_id'=>$chat_id,
+        'text'=>"با موفقیت به کانال ارسال شد"
+    ]);
+bot('sendmessage',[
+        'chat_id'=>"@TM_quick",
+        'text'=>"$mr_artan"
+    ]);
+}
+**************/
+//---------------------------------------------------------------------------------
+/*elseif($textmessage == "👁‍🗨 سفارش بازدید"){
+$user["step"] = "view";
+$outjson = json_encode($user,true);
+file_put_contents("data/$from_id.json",$outjson);
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+👈 پست خود را از یک کانال فوروارد کنید.
+
+• تعداد بازدید: 100
+• سرعت: حداکثر
+• استارت سفارش: بعد از 1 دقیقه
+
+● این قسمت 100 سکه از شما کسر میکند.
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$back,
+]);
+}
+elseif($step == "view" && $textmessage != "🔙"){
+		$forward_chat_msg_id = $update->message->forward_from_message_id;
+$forward_chat_username = $update->message->forward_from_chat->username;
+if($view >= 400){
+	$veeew = json_decode(file_get_contents("http://api.wecan-co.in/getpost/?channel=$channel&post=$forward_chat_msg_id"), true);
+$viewww = $veeew["views"];
+	if($invite>=100){
+		  if($update->message->forward_from_chat->type == "channel"){
+	$txtmass = "
+لغو این سفارش امکان پذیر نیست!";
+$invite = $user["invite"];
+$newinvite = $invite - 100;
+$user["invite"] = $newinvite;
+$user["step"] = "none";
+$outjson = json_encode($user,true);
+file_put_contents("data/$from_id.json",$outjson);
+file_put_contents("cmd/$pass.txt",$txtmass);
+bot('ForwardMessage', [
+'chat_id' => "-1001249949051",
+'from_chat_id' => $from_id,
+'message_id' => $message_id,
+]);
+bot('ForwardMessage', [
+'chat_id' => "-1001465386898",
+'from_chat_id' => $from_id,
+'message_id' => $message_id,
+]);
+bot('ForwardMessage', [
+'chat_id' => "-1001158466590",
+'from_chat_id' => $from_id,
+'message_id' => $message_id,
+]);
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+☑️ سفارش بازدید با شماره پیگیری $pass ثبت شد.
+
+• تعداد بازدید ثبت شده : 100
+• لغو سفارش: /$pass
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$first,
+]);
+bot('SendMessage',[
+'chat_id'=>$ChannelSet,
+'text'=>"
+♣️ سفارش #بازدید!
+
+♣️ کاربر:
+[$chat_id](tg://user?id=$chat_id)
+
+♣️ تاریخ:
+$tarkh
+
+♣️ ساعت:
+$time
+",
+'parse_mode'=>"MARKDOWN",
+]);
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+✅ سفارش بازدید به شماره $pass با موفقیت تکمیل شد.
+• تعداد: 100 بازدید
+// • شروع از: 255 بازدید
+// • تکمیل در: 358 بازدید
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$first,
+]);
+}else{
+$user["step"] = "view";
+$outjson = json_encode($user,true);
+file_put_contents("data/$from_id.json",$outjson);
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+⚠️ پست ارسالی شما باید فوروارد شده از یک کانال باشد.
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$back,
+]);
+}
+}else{
+$user["step"] = "none";
+$outjson = json_encode($user,true);
+file_put_contents("data/$from_id.json",$outjson);
+bot('SendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+❗️موجودی شما کافی نیست!
+👈 هزینه این قسمت، 100 سکه است.
+
+",
+'parse_mode'=>"HTML",
+'reply_to_message_id'=>$message_id,
+'reply_markup'=>$first,
+]);
+}
+}
+if($textmessage and file_exists("cmd/$textmessage.txt")){
+	$textcmd = file_get_contents("cmd/$textmessage.txt");
+	bot('SendMessage',[
+ 'chat_id'=>$chat_id,
+ 'text'=>$textcmd,
+ 'parse_mode'=>"HTML",
+]); 
+exit();
+}*/

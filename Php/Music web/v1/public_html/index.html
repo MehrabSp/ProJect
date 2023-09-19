@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick - Music ply</title>
+		<!-- style -->
+	<link rel="stylesheet" href="css/stylem.css?v=1.1.6.1">
+		<!-- style Home -->
+	<link rel="stylesheet" href="css/stylemh.css?v=1.1.6.1">
+<script>window.console = window.console || function(t) {};</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+	<script>
+function showHint(str) {
+  if (str.length == 0) {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    }
+    xmlhttp.open("GET", "search/getlistmusic.php?q="+str, true);
+    xmlhttp.send();
+  }
+}
+	</script>
+</head>
+
+<body translate="no">
+	<!-- icon star in search -->
+<svg width="0" height="0" class="hidden">
+<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 511.987 511" id="emptystar">
+    <path d="M114.594 491.14c-5.61 0-11.18-1.75-15.934-5.187a27.223 27.223 0 01-10.582-28.094l32.938-145.09L9.312 214.81a27.188 27.188 0 01-7.976-28.907 27.208 27.208 0 0123.402-18.71l147.797-13.419L230.97 17.027C235.277 6.98 245.089.492 255.992.492s20.715 6.488 25.024 16.512l58.433 136.77 147.774 13.417c10.882.98 20.054 8.344 23.425 18.711 3.372 10.368.254 21.739-7.957 28.907L390.988 312.75l32.938 145.086c2.414 10.668-1.727 21.7-10.578 28.098-8.832 6.398-20.61 6.89-29.91 1.3l-127.446-76.16-127.445 76.203c-4.309 2.559-9.11 3.864-13.953 3.864zm141.398-112.874c4.844 0 9.64 1.3 13.953 3.859l120.278 71.938-31.086-136.942a27.21 27.21 0 018.62-26.516l105.473-92.5-139.543-12.671a27.18 27.18 0 01-22.613-16.493L255.992 39.895 200.844 168.96c-3.883 9.195-12.524 15.512-22.547 16.43L38.734 198.062l105.47 92.5c7.554 6.614 10.858 16.77 8.62 26.54l-31.062 136.937 120.277-71.914c4.309-2.559 9.11-3.86 13.953-3.86zm-84.586-221.848s0 .023-.023.043zm169.13-.063l.023.043c0-.023 0-.023-.024-.043zm0 0"></path>
+  </symbol>
+</svg>
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+<div class="app-wrapper">
+  <div class="left-area hide-on-mobile">
+    <div class="app-header">Music.
+      <span class="inner-text">ply</span>
+      <button class="close-menu">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x">
+          <defs />
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="left-area-content">
+      <div class="page-link-list">
+        <a href="#" class="item-link active" id="pageLink">
+          <svg class="link-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-home" viewBox="0 0 24 24">
+            <defs />
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            <path d="M9 22V12h6v10" /></svg>
+          خانه</a>
+        <a href="#" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+          </svg>
+          بهترین های هفته</a>
+		  <a href="#" class="item-link list-icon" id="pageLink" onclick="openSinger()">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+          </svg>
+		  خواننده ها</a>
+        <a href="#newmusic" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play">
+            <path d="M5 3l14 9-14 9V3z" />
+          </svg>
+          تازه ها</a>
+        <a href="#bestsell" class="item-link" id="pageLink">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" /></svg>
+          پرفروش ترین ها</a>
+      </div>
+      <div class="list-header">
+        <span class="">Genre</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" /></svg>
+      </div>
+      <a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Hip hop/Rap</a>
+		<a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Rock</a>
+		<a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Classic</a>
+		<a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Pop</a>
+		<a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Jazz</a>
+      <a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0110 0v4" />
+        </svg>
+        Blues</a>
+      <div class="list-header">
+        <span class="">Public</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" /></svg>
+      </div>
+      <a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
+        Vlogs</a>
+      <a href="#" class="item-link" id="pageLink">
+        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
+        Dance</a>
+    </div>
+    <button class="btn-invite"><a href="#Trending">Top Music 2022</a></button>
+  </div>
+  <div class="right-area">
+    <div class="right-area-upper">
+      <button class="menu-button">
+        <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <defs />
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+      <div class="search-part-wrapper">
+        <input class="search-input" type="text" placeholder="Search music..." onkeyup="showHint(this.value)" autocomplete="on">
+		<div class="search-menu" id="txtHint" style="display: block;">
+		</div>
+        <a class="menu-links" href="#">Explore</a>
+        <a class="menu-links" href="#">Events</a>
+        <button class="more-button">
+          <svg width="24" height="24" fill="none" stroke="#51a380" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-more-vertical">
+            <defs />
+            <circle cx="12" cy="12" r="1" />
+            <circle cx="12" cy="5" r="1" />
+            <circle cx="12" cy="19" r="1" />
+          </svg>
+        </button>
+        <ul class="more-menu-list hide">
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Events</a></li>
+          <!-- <li> <button class="action-buttons btn-record">Record</button></li> -->
+          <!-- <li><button class="action-buttons btn-upload">Upload</button></li> -->
+        </ul>
+      </div>
+      <button class="btn-notification" onclick="openNews()">
+	  <a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#232428" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+        </svg>
+        <span>0</span>
+		</a>
+      </button>
+      <div class="action-buttons-wrapper">
+	  <div class="profile">
+        <img src="image/Quick.jpg" alt="">
+        <div class="profile-info">
+          <span class="profile-name">Tm Quick</span>
+          <span class="Tel"><a href="tg://resolve?domain=TmQuick">Telegram</a></span>
+        </div>
+      </div>
+        <!-- <button class="action-buttons btn-record">Record</button> -->
+        <!-- <button class="action-buttons btn-upload">Upload</button> -->
+      </div>
+    </div>
+    <div id="hpage" class="page-right-content">
+      <div class="content-line content-line-hero">
+        <div class="line-header">
+          <span class="header-text">New Uploads</span>
+        </div>
+        <div class="slider-wrapper owl-carousel owl-theme" id="owl-slider-1">
+			<div class="item hero-img-wrapper img-1" onclick="openimg1()">
+			  <img src="../../image/jangale-tarik.jpg" alt="SlideShow">
+            </div>
+			<div class="item hero-img-wrapper img-2" onclick="openimg2()">
+			  <img src="../../image/jangale-tarik.jpg" alt="SlideShow">
+            </div>
+			<div class="item hero-img-wrapper img-3" onclick="openimg3()">
+			  <img src="../../image/jangale-tarik.jpg" alt="SlideShow">
+            </div>
+        </div>
+      </div>
+      <div class="content-line content-line-list">
+        <div class="line-header">
+          <span id="Trending" class="header-text">Trending</span>
+        </div>
+        <div id="owl-slider-2" class="slider-wrapper owl-carousel">
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="newmusic" class="content-line content-line-list">
+        <div class="line-header">
+          <span class="header-text">New Music</span>
+        </div>
+        <div id="owl-slider-3" class="slider-wrapper owl-carousel">
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <div id="bestsell" class="content-line content-line-list">
+        <div class="line-header">
+          <span class="header-text">Best selling</span>
+        </div>
+        <div id="owl-slider-4" class="slider-wrapper owl-carousel">
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Minimal Photography</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Puppet Theatre</p>
+              <p class="video-description-subheader">By July</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Road Trip</p>
+              <p class="video-description-subheader">By Wallace</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+          <div class="item video-box-wrapper">
+            <div class="img-preview">
+              <img src="../../image/jangale-tarik.jpg" alt="video">
+            </div>
+            <div class="video-description-wrapper">
+              <p class="video-description-header">Young Folks</p>
+              <p class="video-description-subheader">By Peter</p>
+              <p class="video-description-info">116K views <span>1 hour ago</span></p>
+              <button class="btn-play"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--singer-->
+  <div id="singer" class="shadow" hidden>
+  <div class="main-modal">
+    <div class="modal-left">
+      <div class="modal-image-wrapper">
+        <img src="../../image/jangale-tarik.jpg">
+      </div>
+      <div class="modal-info-header">
+        <div class="left-side">
+          <h1 class="modalHeader-js"></h1>
+          <p>Stockton Street</p>
+        </div>
+        <div class="right-side">
+          Starts from:
+          <span class="amount">$5</span>
+        </div>
+      </div>
+      <div class="info-bar">
+        <div class="info-wrapper">
+          <div class="info-icon">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <span>2 Bedrooms</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-wind"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+          </div>
+          <span>2 Bathrooms</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+          </div>
+          <span>1250m2</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span>Highly Secured</span>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+        <div class="modal-info-header">
+          <h1>Description</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+        <div class="desc-actions">
+          <button class="btn-book">Book Now</button>
+          <div class="add-favourite">
+            <input type="checkbox" id="favourite">
+            <label for="favourite">
+              <span class="favourite-icon">
+                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>  
+                </span>
+              <span>Add to favourites</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      </div>
+     <div class="modal-right">
+       <div class="app-main-right-header">
+        <span>Reviews</span>
+        <a href="#">See All</a>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
+             </div>
+             <p>Jessica Finnick</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,latina" alt="Review">
+             </div>
+             <p>Gloria Ramirez</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?man,art" alt="Review">
+             </div>
+             <p>Luck Besson</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,adventure" alt="Review">
+             </div>
+             <p>Luna Rosa</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?man,modern" alt="Review">
+             </div>
+             <p>John mayer</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman" alt="Review">
+             </div>
+             <p>Tina Finnick</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,modern" alt="Review">
+             </div>
+             <p>July Wallock</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+
+     </div>
+    <button class="btn btn-close" onclick="closeS()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    </div>    
+  </div>
+
+<!--News-->
+  <div id="news" class="shadow" hidden>
+  <div class="main-modal">
+    <div class="modal-left">
+      <div class="modal-image-wrapper">
+	  <center>
+        <img src="https://source.unsplash.com/featured/1200x900/?design,hotel">
+		</center>
+      </div>
+      <div class="modal-info-header">
+        <div class="left-side">
+          <h1 class="modalHeader-js"></h1>
+          <p>Latest news</p>
+        </div>
+        <div class="right-side">
+          latest update:
+          <span class="amount">2023/1/1</span>
+        </div>
+      </div>
+      <div class="info-bar">
+        <div class="info-wrapper">
+          <div class="info-icon">
+			<img class="btn-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABQ0lEQVRIidWVPUoDURSFv/sMErBxAaOlkQha2VtpiGlGcQvpphcsYqMuQFNkERLBIpKsQDsLMf40YnagQYLOXJsJvMQk6MzIkK+by+Gde96BeZAW7YKr7YKrcXUm2bV+IvbHQ2G3qAQ1wIl4XkdEy7nGRaM/GEgQ83AAR1Vq9iAzLABYvqoLEQi7WLBn/97BcAJ7k0RIJ0HMDgZIJ0FURiWfrgSpdDBdV9THLjuWwePWznYgWgFWgOdRmsgG95tuKRC9tEarvzHoAM6kf1Hgm6V86/xJjFZAQNjv+d2zrJnzFE6G9QMli2gZeJ20uc6bl1CdA/A/MtW1ZrOrs341lPTGJghfosVJBhZtYN1kP727jb1T7fmeiALcjk3wF4KAA0AFOZ7Jfr2J6BGAiB4mYpBv1luCKQE3wLuqXIto0X6PAb4Bvhhu2s6u0UcAAAAASUVORK5CYII=">
+          </div>
+          <span>0 Music list</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+		  <img class="btn-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAsUlEQVQ4jdWRPwrCMBTGf692cxCKq3vBi2Stp3DRYwiCIHgJB4eu8SZ1dY+Ti6A+lw6liUknwbeEPL5/yQd/P9K9NKZyQDGA50pbT71tYyod4trF5X3nhIjnnLdnUdpaAoRkwjwEbMFXRI6v92g7P59u33BZxHCG6iTjuY+l8hJczGKjsAaltPVSe00lBRRdAWPgASAQbcZ7gggH4I6yCxHaj3ShZXJiLbiBIi4N+fV8ALRbPJwpJM+6AAAAAElFTkSuQmCC">
+          </div>
+          <span>0 Remix list</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+            <img class="btn-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABHklEQVQ4jc2SvUrEQBSFv5sNIigWdiJWFkb0Iax0BAtnwcpXcLfZ0tSCCP7sS1gojIVF0vkSamwFLe0Elc1ei82IidmVrfRUw71zzzn3zMBfQ/zhwTQPFNqonkapizNjdcjMB8pRlLoYIPRVRVsq2hTkEoijxEnd9O3GzmxDes9AmUCELioO5HiU5ZX04gWYLK0wsK8dYAJ4E9hfStxQoszYR0TO837jMCjsd3IN56LECXm+qMhetml3RxhZAJ0J6J14xlJgd+t2NTP2KTNW68L0NQUJ65pFgPPV3tdLoX5/LQjk9d5sry0nVzdVFY8ocaJoC5gC3n09HFjpbwnBNTD9faDqQISuKm2Usx+peMURH6gWwTiXfyUYV/1/4BPjkXCJf0W1JgAAAABJRU5ErkJggg==">
+          </div>
+          <span>0 Singer</span>
+        </div>
+        <div class="info-wrapper">
+          <div class="info-icon">
+		  <img class="btn-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACu0lEQVRoge2YP0wTURzHv7/XK3EA4mRCjBExLaYENjd1oqU0Dv2Trk4N0dXoQOLu4OgAiA7qWFtM1FYimKgsxo2kJS1GQjW6SnVAubufA229PksKucedJPeZ3r337ve+33v/D/Dw8PDwsAF1ylyLxgcFxDSDYwAGAPicldXCAPANwAtT0O1QIb8pV/jHwNpkPEJMTwD0OSDwINQFi1RwMbdkzWwzsBaNDxJoFf+f+CZ1Q9dGR5aytWaGZi1tDJuGeNoAccbo1VZGstnfzurcpZRO92g/di4y6D6AQQD9Pr8+DeBas06bgcaY34U4c6648NopsZ1ofLjlSjSeYVBj6Fg0AhDSOwPNhNGrrRy2wP2i9/nftR6YTlrLZAOt1catYdMJSUvbiigbOHJ4BtxG615l/5QjibAQmAUAJsxo2L4bKBZ/qWxDRmkPCEFzAIYADBHjjsHH1iuTiSu8x5FFSZtqw/EZKeMUMx5Woon31Vjyktq2dnFqDpw3TX5TmUw8K4dTAZWBHZ3EzLgsfGapEk3OfYwkTqiI6cYq5GfwlE6oVCdS43aDubeMEo6bZM7aDePqPkAgthvDPQOM74B51W4YNwzsEOiexhgefvl02W4wpTtxN4jw3NDF9dCr3LqqmE4Z+CAE3QgW8m9VB1ZsgDak3fgzEW4FiwuPCbA9YTuh9izENAXgE0AbTLjpo+3AcHHh0WGJBxT3QOOXx1mVMbtx5O8DngG3kQ0YzUQpne5xWMueSFoMa5ls4Gsz4fupXzhMUQfBXzetl6Ev1jLZQKGVYjyoTqTG3eyJUjrdU44kwiaZ8391UcFap+2uWo4lTwuTVwH0OyPxwGwZujZm/bnb1gOhQn5TsEgBqDsurTtbBE5ZxQMdVqHgYm7J0LVRMM2AuAZp0jiMAeIamGYMXRtTcXr18PDw8GjjDy5X1X7N1zCYAAAAAElFTkSuQmCC">
+          </div>
+          <span>0 Music Video</span>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+        <div class="modal-info-header">
+          <h1>Description</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+        <div class="desc-actions">
+          <button class="btn-book">Telegram Channel</button>
+        </div>
+      </div>
+      </div>
+     <div class="modal-right">
+       <div class="app-main-right-header">
+        <span>Reviews</span>
+        <a href="#">See All</a>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
+             </div>
+             <p>Jessica Finnick</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,latina" alt="Review">
+             </div>
+             <p>Gloria Ramirez</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?man,art" alt="Review">
+             </div>
+             <p>Luck Besson</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,adventure" alt="Review">
+             </div>
+             <p>Luna Rosa</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?man,modern" alt="Review">
+             </div>
+             <p>John mayer</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman" alt="Review">
+             </div>
+             <p>Tina Finnick</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+           <div class="profile-info-wrapper">
+             <div class="profile-img-wrapper">
+               <img src="https://source.unsplash.com/featured/1200x900/?woman,modern" alt="Review">
+             </div>
+             <p>July Wallock</p>
+           </div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+         </div>
+      </div>
+
+     </div>
+    <button class="btn btn-close" onclick="closeN()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    </div>    
+  </div>
+  <!--img new-->
+  <div id="imgnew1" class="shadow" hidden>
+  <div class="main-modal">
+    <div class="modal-left padding1">
+	<center>
+			  <img src="../../image/jangale-tarik.jpg">  
+	</center>
+      <div class="modal-info-header">
+        <div class="left-side">
+          <h1 class="modalHeader-js"></h1>
+          <p>Jangale Tarik</p>
+        </div>
+        <div class="right-side">
+          Ho3ein Ft Pishro Ft 
+          <span class="amount">Tataloo</span>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+	  <center><h1>BOHT ALBUM</h1></center>
+        <center><div class="modal-info-header">
+          <p>
+Download The Song 'Jangale Tarik' (Dark Forest) By Amir Tataloo & Ho3ein & Reza Pishro With 320 (HD) Qualities And The Lyrics And Play The Music Online.
+<br><br>
+دانلود آهنگ جنگل تاریک از امیر تتلو و حسین و رضا پیشرو با کیفیت 320 (بالاترین کیفیت) و متن ترانه و پخش آنلاین موزیک
+		</p>
+        </div></center>
+      </div>
+	  <center>
+	  <div class="desc-actions">
+          <a href="image/jangale-tarik.jpg" target="_blank"><button class="btn-book">Download Music</button></a>
+        </div>
+		<div class="desc-actions">
+          <a href="https://youtu.be/REE7tdO17WM" target="_blank"><button class="btn-book">Open YouTube Music</button></a>
+        </div>
+		</center>
+      </div>
+     <div class="modal-right heightauto">
+       <div class="app-main-right-header">
+        <span>Text Music 'lyric'</span>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+		 <p>Tataloo</p>
+           <div class="profile-info-wrapper">
+             <p>یک یک دو دو هشت<br>
+جنگل خوبه، سبزه، طبیعته، آزاده<br>
+اما تاریک که باشه خطرناکه<br>
+اما تاریک که باشه خطرناکه<br>
+<br>
+جنگل تاریک بده<br>
+این پاهای سنگینو نگاه<br>
+عقرب ها نیش زده<br>
+این تن دیگه لاتیش پره<br>
+تو جو لاتیش نده<br>
+هیزمی نفتی هر چی هستی بدون<br>
+که منم خود آتیشکده<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br></p>
+           </div>
+           <p>Pishro</p>
+		   <div class="profile-info-wrapper">
+             <p>وضعیت اگه هزار برابر از این سخت تر هم بشه بهش فکر نمیکنم<br>
+من مسیح نیستم و بار ها خودمو از روی صلیب زنده میکنم<br>
+وقتی داشتن شناسناممو میگرفتن چند تا فرشته دورم بود<br>
+اما هر روز گذشت، سیاه تر شد و بهشت دورم سوخت<br>
+از سقف بدهی بابا رفت توو هروئین<br>
+مجبور بودیم کل شهرو بدوییم<br>
+درگیر باشیم و دردو بجوییم<br>
+با آس قلب قلب برگ مرگو بِبُریم<br>
+این جنگل تاریک و داغون<br>
+بارون به رنگ مشکیِ جادو<br>
+مثل تحمل زشتی طاعون<br>
+چوب های توو لجن کشتی ما بود<br>
+خونه منو رو دریا ساختن<br>
+بدون انتخاب تووی سرما باختم<br>
+اما از همینا فردا ساختم و<br>
+زندگیمو ندادم به چند تا راهزن<br>
+نمیخواستم توو دریا وایستم<br>
+اما تصمیم گرفتم دریا باشم<br>
+حالا ساخته میشن ابرها با من<br>
+من میتونم هر جا باشم<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+گاهی تاریکی را وسیله نیاز نیست<br>
+نور لازم است، حسن بابا<br>
+گاهی در عمق زمین، در عمق تاریکی<br>
+موشِ کور لازم است<br>
+باشد که همدیگر را با تفاوت هایمان بپذیریم<br>
+<br>
+من رو به ماه<br>
+آروم و حل توو سکوت چاه<br>
+رو تنم نقشِ کوچه ها و خونه ها<br>
+رو شعرم خاک و خونِ راه<br>
+رو به راهست توو چهارچوب شاه<br>
+پشت سر رفقا، رو به روم هِیترها * کش ها<br>
+توو تاریکی از همه بیدارترم<br>
+چیپ تر میشی بشی هر چی هار تر<br>
+کاری ندارم که کی چیکار کرد<br>
+وقتی سرعت نور هَ واسه چی بالگرد؟<br>
+خلاصه هلیکوپترو سوار نشدم و<br>
+اومدم توو عمق تاریکی<br>
+دنبال جای پای یوفو<br>
+گذاشتم کنار همه کتاب و آیه های کوفت و<br>
+زندگیِ سخت شد و ما هم پایه های رو فرم<br>
+دنبال * اونی که مرگ تنها معجزشه<br>
+باید هم فقط بخوره تا که خورده نشه<br>
+توو این اوضاع شب که هیچی، ببین صبح چه لشه<br>
+حتی توو استخر و پول پُر تخم پشه، پر * نشئه<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+<br>
+از رنگ قلبمه<br>
+از حقیقتمه<br>
+از هر نیت سبزیه که از روو خشممه<br>
+بس که دردشونو خوردی شدن معرفت زده<br>
+از همین چیزاست هر چی میخوام دَم دستمه<br></p>
+           </div>
+		   <p>Ho3ein</p>
+		   <div class="profile-info-wrapper">
+             <p>سخت میشه حرف زدن<br>
+وقتی نگاه ها رو میشه خوند<br>
+فهمید چی توو کله ها میگذره<br>
+هارن ولی میل ما بیشتره این بار<br>
+واسه صلح واسه عشق، میشه پل زد تا بهشت<br>
+باید بخشید درو بست، دیگه قانون ننوشت<br>
+من توو ترکم خیلی وقته، لق منفی، فاز خنده<br>
+بدخواهم تکلیف معلومه، اون میگذره ما که بنده<br>
+اصلاً سلامتی * ها، همونی که بدی هاشو یاد داد به ما<br>
+تهش چیشد مال ما رو خورد داد صدا<br>
+جاش شدیم قوی تر و خود ساخته باز، لول آپ<br>
+تاییدشو میگیرم از گره هام، لول آپ<br>
+سنگین تره هر دفعه گره ها، لول آپ<br>
+مگه داریم تنگ تر از دلِ ما، همش معطل یه نگاه<br>
+آسمون ها کی بشه بده جا<br>
+همینه معضل، دنبال دریچه روزن<br>
+من آماده ام برم اونقدر که<br>
+همه چیمون بمونه پشت سر<br>
+من شدم الگوت، نه اشتباهه دیگه فرمول<br>
+نه تو هندونه بده، نه من امید واهی پایانی پُر نور<br>
+پس بزار آباد کنم، بزنم و برم بعدی<br>
+تا اونجا که دارم تصویر، تا اونجا که بشم تعطیل<br>
+نه برای کف و تشویق، نه برای لوحِ تقدیر<br>
+من و فکر پل بعدی، جوری ساختتم شل نشم جلو تهدید<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم …</p>
+           </div>
+         </div>
+      </div>
+     </div>
+    <button class="btn btn-close" onclick="closeimg1()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    </div>    
+  </div>
+
+  <div id="imgnew2" class="shadow" hidden>
+  <div class="main-modal">
+    <div class="modal-left padding1">
+	<center>
+			  <img src="https://quick.eliyahost.ir/image/jangale-tarik.jpg">  
+	</center>
+      <div class="modal-info-header">
+        <div class="left-side">
+          <h1 class="modalHeader-js"></h1>
+          <p>Jangale Tarik</p>
+        </div>
+        <div class="right-side">
+          Ho3ein Ft Pishro Ft 
+          <span class="amount">Tataloo</span>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+	  <center><h1>BOHT ALBUM</h1></center>
+        <center><div class="modal-info-header">
+          <p>
+Download The Song 'Jangale Tarik' (Dark Forest) By Amir Tataloo & Ho3ein & Reza Pishro With 320 (HD) Qualities And The Lyrics And Play The Music Online.
+<br><br>
+دانلود آهنگ جنگل تاریک از امیر تتلو و حسین و رضا پیشرو با کیفیت 320 (بالاترین کیفیت) و متن ترانه و پخش آنلاین موزیک
+		</p>
+        </div></center>
+      </div>
+	  <center>
+	  <div class="desc-actions">
+          <a href="image/jangale-tarik.jpg" target="_blank"><button class="btn-book">Download Music</button></a>
+        </div>
+		<div class="desc-actions">
+          <a href="https://youtu.be/REE7tdO17WM" target="_blank"><button class="btn-book">Open YouTube Music</button></a>
+        </div>
+		</center>
+      </div>
+     <div class="modal-right heightauto">
+       <div class="app-main-right-header">
+        <span>Text Music 'lyric'</span>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+		 <p>Tataloo</p>
+           <div class="profile-info-wrapper">
+             <p>یک یک دو دو هشت<br>
+جنگل خوبه، سبزه، طبیعته، آزاده<br>
+اما تاریک که باشه خطرناکه<br>
+اما تاریک که باشه خطرناکه<br>
+<br>
+جنگل تاریک بده<br>
+این پاهای سنگینو نگاه<br>
+عقرب ها نیش زده<br>
+این تن دیگه لاتیش پره<br>
+تو جو لاتیش نده<br>
+هیزمی نفتی هر چی هستی بدون<br>
+که منم خود آتیشکده<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br></p>
+           </div>
+           <p>Pishro</p>
+		   <div class="profile-info-wrapper">
+             <p>وضعیت اگه هزار برابر از این سخت تر هم بشه بهش فکر نمیکنم<br>
+من مسیح نیستم و بار ها خودمو از روی صلیب زنده میکنم<br>
+وقتی داشتن شناسناممو میگرفتن چند تا فرشته دورم بود<br>
+اما هر روز گذشت، سیاه تر شد و بهشت دورم سوخت<br>
+از سقف بدهی بابا رفت توو هروئین<br>
+مجبور بودیم کل شهرو بدوییم<br>
+درگیر باشیم و دردو بجوییم<br>
+با آس قلب قلب برگ مرگو بِبُریم<br>
+این جنگل تاریک و داغون<br>
+بارون به رنگ مشکیِ جادو<br>
+مثل تحمل زشتی طاعون<br>
+چوب های توو لجن کشتی ما بود<br>
+خونه منو رو دریا ساختن<br>
+بدون انتخاب تووی سرما باختم<br>
+اما از همینا فردا ساختم و<br>
+زندگیمو ندادم به چند تا راهزن<br>
+نمیخواستم توو دریا وایستم<br>
+اما تصمیم گرفتم دریا باشم<br>
+حالا ساخته میشن ابرها با من<br>
+من میتونم هر جا باشم<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+گاهی تاریکی را وسیله نیاز نیست<br>
+نور لازم است، حسن بابا<br>
+گاهی در عمق زمین، در عمق تاریکی<br>
+موشِ کور لازم است<br>
+باشد که همدیگر را با تفاوت هایمان بپذیریم<br>
+<br>
+من رو به ماه<br>
+آروم و حل توو سکوت چاه<br>
+رو تنم نقشِ کوچه ها و خونه ها<br>
+رو شعرم خاک و خونِ راه<br>
+رو به راهست توو چهارچوب شاه<br>
+پشت سر رفقا، رو به روم هِیترها * کش ها<br>
+توو تاریکی از همه بیدارترم<br>
+چیپ تر میشی بشی هر چی هار تر<br>
+کاری ندارم که کی چیکار کرد<br>
+وقتی سرعت نور هَ واسه چی بالگرد؟<br>
+خلاصه هلیکوپترو سوار نشدم و<br>
+اومدم توو عمق تاریکی<br>
+دنبال جای پای یوفو<br>
+گذاشتم کنار همه کتاب و آیه های کوفت و<br>
+زندگیِ سخت شد و ما هم پایه های رو فرم<br>
+دنبال * اونی که مرگ تنها معجزشه<br>
+باید هم فقط بخوره تا که خورده نشه<br>
+توو این اوضاع شب که هیچی، ببین صبح چه لشه<br>
+حتی توو استخر و پول پُر تخم پشه، پر * نشئه<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+<br>
+از رنگ قلبمه<br>
+از حقیقتمه<br>
+از هر نیت سبزیه که از روو خشممه<br>
+بس که دردشونو خوردی شدن معرفت زده<br>
+از همین چیزاست هر چی میخوام دَم دستمه<br></p>
+           </div>
+		   <p>Ho3ein</p>
+		   <div class="profile-info-wrapper">
+             <p>سخت میشه حرف زدن<br>
+وقتی نگاه ها رو میشه خوند<br>
+فهمید چی توو کله ها میگذره<br>
+هارن ولی میل ما بیشتره این بار<br>
+واسه صلح واسه عشق، میشه پل زد تا بهشت<br>
+باید بخشید درو بست، دیگه قانون ننوشت<br>
+من توو ترکم خیلی وقته، لق منفی، فاز خنده<br>
+بدخواهم تکلیف معلومه، اون میگذره ما که بنده<br>
+اصلاً سلامتی * ها، همونی که بدی هاشو یاد داد به ما<br>
+تهش چیشد مال ما رو خورد داد صدا<br>
+جاش شدیم قوی تر و خود ساخته باز، لول آپ<br>
+تاییدشو میگیرم از گره هام، لول آپ<br>
+سنگین تره هر دفعه گره ها، لول آپ<br>
+مگه داریم تنگ تر از دلِ ما، همش معطل یه نگاه<br>
+آسمون ها کی بشه بده جا<br>
+همینه معضل، دنبال دریچه روزن<br>
+من آماده ام برم اونقدر که<br>
+همه چیمون بمونه پشت سر<br>
+من شدم الگوت، نه اشتباهه دیگه فرمول<br>
+نه تو هندونه بده، نه من امید واهی پایانی پُر نور<br>
+پس بزار آباد کنم، بزنم و برم بعدی<br>
+تا اونجا که دارم تصویر، تا اونجا که بشم تعطیل<br>
+نه برای کف و تشویق، نه برای لوحِ تقدیر<br>
+من و فکر پل بعدی، جوری ساختتم شل نشم جلو تهدید<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم …</p>
+           </div>
+         </div>
+      </div>
+     </div>
+    <button class="btn btn-close" onclick="closeimg2()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    </div>    
+  </div>
+  
+  <div id="imgnew3" class="shadow" hidden>
+  <div class="main-modal">
+    <div class="modal-left padding1">
+	<center>
+			  <img src="https://quick.eliyahost.ir/image/jangale-tarik.jpg">  
+	</center>
+      <div class="modal-info-header">
+        <div class="left-side">
+          <h1 class="modalHeader-js"></h1>
+          <p>Jangale Tarik</p>
+        </div>
+        <div class="right-side">
+          Ho3ein Ft Pishro Ft 
+          <span class="amount">Tataloo</span>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+	  <center><h1>BOHT ALBUM</h1></center>
+        <center><div class="modal-info-header">
+          <p>
+Download The Song 'Jangale Tarik' (Dark Forest) By Amir Tataloo & Ho3ein & Reza Pishro With 320 (HD) Qualities And The Lyrics And Play The Music Online.
+<br><br>
+دانلود آهنگ جنگل تاریک از امیر تتلو و حسین و رضا پیشرو با کیفیت 320 (بالاترین کیفیت) و متن ترانه و پخش آنلاین موزیک
+		</p>
+        </div></center>
+      </div>
+	  <center>
+	  <div class="desc-actions">
+          <a href="image/jangale-tarik.jpg" target="_blank"><button class="btn-book">Download Music</button></a>
+        </div>
+		<div class="desc-actions">
+          <a href="https://youtu.be/REE7tdO17WM" target="_blank"><button class="btn-book">Open YouTube Music</button></a>
+        </div>
+		</center>
+      </div>
+     <div class="modal-right heightauto">
+       <div class="app-main-right-header">
+        <span>Text Music 'lyric'</span>
+      </div>
+       <div class="card-wrapper">
+         <div class="card">
+		 <p>Tataloo</p>
+           <div class="profile-info-wrapper">
+             <p>یک یک دو دو هشت<br>
+جنگل خوبه، سبزه، طبیعته، آزاده<br>
+اما تاریک که باشه خطرناکه<br>
+اما تاریک که باشه خطرناکه<br>
+<br>
+جنگل تاریک بده<br>
+این پاهای سنگینو نگاه<br>
+عقرب ها نیش زده<br>
+این تن دیگه لاتیش پره<br>
+تو جو لاتیش نده<br>
+هیزمی نفتی هر چی هستی بدون<br>
+که منم خود آتیشکده<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br></p>
+           </div>
+           <p>Pishro</p>
+		   <div class="profile-info-wrapper">
+             <p>وضعیت اگه هزار برابر از این سخت تر هم بشه بهش فکر نمیکنم<br>
+من مسیح نیستم و بار ها خودمو از روی صلیب زنده میکنم<br>
+وقتی داشتن شناسناممو میگرفتن چند تا فرشته دورم بود<br>
+اما هر روز گذشت، سیاه تر شد و بهشت دورم سوخت<br>
+از سقف بدهی بابا رفت توو هروئین<br>
+مجبور بودیم کل شهرو بدوییم<br>
+درگیر باشیم و دردو بجوییم<br>
+با آس قلب قلب برگ مرگو بِبُریم<br>
+این جنگل تاریک و داغون<br>
+بارون به رنگ مشکیِ جادو<br>
+مثل تحمل زشتی طاعون<br>
+چوب های توو لجن کشتی ما بود<br>
+خونه منو رو دریا ساختن<br>
+بدون انتخاب تووی سرما باختم<br>
+اما از همینا فردا ساختم و<br>
+زندگیمو ندادم به چند تا راهزن<br>
+نمیخواستم توو دریا وایستم<br>
+اما تصمیم گرفتم دریا باشم<br>
+حالا ساخته میشن ابرها با من<br>
+من میتونم هر جا باشم<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+گاهی تاریکی را وسیله نیاز نیست<br>
+نور لازم است، حسن بابا<br>
+گاهی در عمق زمین، در عمق تاریکی<br>
+موشِ کور لازم است<br>
+باشد که همدیگر را با تفاوت هایمان بپذیریم<br>
+<br>
+من رو به ماه<br>
+آروم و حل توو سکوت چاه<br>
+رو تنم نقشِ کوچه ها و خونه ها<br>
+رو شعرم خاک و خونِ راه<br>
+رو به راهست توو چهارچوب شاه<br>
+پشت سر رفقا، رو به روم هِیترها * کش ها<br>
+توو تاریکی از همه بیدارترم<br>
+چیپ تر میشی بشی هر چی هار تر<br>
+کاری ندارم که کی چیکار کرد<br>
+وقتی سرعت نور هَ واسه چی بالگرد؟<br>
+خلاصه هلیکوپترو سوار نشدم و<br>
+اومدم توو عمق تاریکی<br>
+دنبال جای پای یوفو<br>
+گذاشتم کنار همه کتاب و آیه های کوفت و<br>
+زندگیِ سخت شد و ما هم پایه های رو فرم<br>
+دنبال * اونی که مرگ تنها معجزشه<br>
+باید هم فقط بخوره تا که خورده نشه<br>
+توو این اوضاع شب که هیچی، ببین صبح چه لشه<br>
+حتی توو استخر و پول پُر تخم پشه، پر * نشئه<br>
+<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+<br>
+از رنگ قلبمه<br>
+از حقیقتمه<br>
+از هر نیت سبزیه که از روو خشممه<br>
+بس که دردشونو خوردی شدن معرفت زده<br>
+از همین چیزاست هر چی میخوام دَم دستمه<br></p>
+           </div>
+		   <p>Ho3ein</p>
+		   <div class="profile-info-wrapper">
+             <p>سخت میشه حرف زدن<br>
+وقتی نگاه ها رو میشه خوند<br>
+فهمید چی توو کله ها میگذره<br>
+هارن ولی میل ما بیشتره این بار<br>
+واسه صلح واسه عشق، میشه پل زد تا بهشت<br>
+باید بخشید درو بست، دیگه قانون ننوشت<br>
+من توو ترکم خیلی وقته، لق منفی، فاز خنده<br>
+بدخواهم تکلیف معلومه، اون میگذره ما که بنده<br>
+اصلاً سلامتی * ها، همونی که بدی هاشو یاد داد به ما<br>
+تهش چیشد مال ما رو خورد داد صدا<br>
+جاش شدیم قوی تر و خود ساخته باز، لول آپ<br>
+تاییدشو میگیرم از گره هام، لول آپ<br>
+سنگین تره هر دفعه گره ها، لول آپ<br>
+مگه داریم تنگ تر از دلِ ما، همش معطل یه نگاه<br>
+آسمون ها کی بشه بده جا<br>
+همینه معضل، دنبال دریچه روزن<br>
+من آماده ام برم اونقدر که<br>
+همه چیمون بمونه پشت سر<br>
+من شدم الگوت، نه اشتباهه دیگه فرمول<br>
+نه تو هندونه بده، نه من امید واهی پایانی پُر نور<br>
+پس بزار آباد کنم، بزنم و برم بعدی<br>
+تا اونجا که دارم تصویر، تا اونجا که بشم تعطیل<br>
+نه برای کف و تشویق، نه برای لوحِ تقدیر<br>
+من و فکر پل بعدی، جوری ساختتم شل نشم جلو تهدید<br></p>
+           </div>
+		   <p>Tataloo</p>
+		   <div class="profile-info-wrapper">
+             <p>جوری هِیت میده انگار دیده ننشو بغلم<br>
+انگار بدجوری داغ کرده کلشو قلمم<br>
+تووی این جنگل تاریک تووی این راهِ وحشی<br>
+پشت سرِ من بیا، من همشو بلدم<br>
+جوری هِیت میده انگار دیده ننشو بغلم …</p>
+           </div>
+         </div>
+      </div>
+     </div>
+    <button class="btn btn-close" onclick="closeimg3()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    </div>    
+  </div>
+  
+<script id="rendered-js" >
+function openSinger() {
+ /*let ini= document.querySelector('.app-wrapper');
+  ini.classList.add("hideModal");*/
+  let open = document.querySelector('#singer');
+  open.classList.add("showModal");
+}
+function openNews() {
+  let open = document.querySelector('#news');
+  open.classList.add("showModal");
+}
+function openimg1() {
+  let open = document.querySelector('#imgnew1');
+  open.classList.add("showModal");
+}
+function openimg2() {
+  let open = document.querySelector('#imgnew2');
+  open.classList.add("showModal");
+}
+function openimg3() {
+  let open = document.querySelector('#imgnew3');
+  open.classList.add("showModal");
+}
+
+function closeS() {
+  /*let modal = document.querySelector('body');
+  modal.classList.add("showModal");*/
+  let m = document.querySelector('#singer');
+  m.classList.remove("showModal");
+}
+
+function closeN() {
+  let m = document.querySelector('#news');
+  m.classList.remove("showModal");
+}
+
+function closeimg1() {
+  let m = document.querySelector('#imgnew1');
+  m.classList.remove("showModal");
+}
+function closeimg2() {
+  let m = document.querySelector('#imgnew2');
+  m.classList.remove("showModal");
+}
+function closeimg3() {
+  let m = document.querySelector('#imgnew3');
+  m.classList.remove("showModal");
+}
+
+const modalHeader = document.querySelector('.modalHeader-js');
+const modalCardPrice = document.querySelector('.amount');
+
+    </script>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+      <script id="rendered-js" >
+$(document).ready(function () {
+  $("a#pageLink").click(function () {
+    $("a#pageLink").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  $(".menu-button").click(function () {
+    $(".left-area").removeClass("hide-on-mobile");
+  });
+
+  $(".close-menu").click(function () {
+    $(".left-area").addClass("hide-on-mobile");
+  });
+
+  $(".more-button").click(function () {
+    $(".more-menu-list").toggle("hide");
+  });
+
+  var owl = $("#owl-slider-1");
+  $("#owl-slider-1").owlCarousel({
+    navigation: true,
+    slideSpeed: 400,
+    paginationSpeed: 400,
+    items: 1,
+    itemsDesktop: false,
+    itemsDesktopSmall: false,
+    itemsTablet: false,
+    itemsMobile: false,
+    autoplay: true,
+    autoPlaySpeed: 200,
+    autoPlayTimeout: 100,
+    autoplayHoverPause: true });
+
+  // Custom Navigation Events
+  $(".owl-next").click(function () {
+    owl.trigger("owl.next");
+  });
+  $(".owl-prev").click(function () {});
+
+  $(".play").click(function () {
+    owl.trigger("owl.play", 100);
+  });
+  $(".stop").click(function () {
+    owl.trigger("owl.stop");
+  });
+
+  var owl = $("#owl-slider-2");
+  owl.owlCarousel({
+    navigation: true,
+    slideSpeed: 400,
+    paginationSpeed: 400,
+    responsive: {
+      0: {
+        items: 1 },
+
+      600: {
+        items: 2 },
+
+      1000: {
+        items: 4 } } });
+
+
+
+
+  var owl = $("#owl-slider-3");
+  owl.owlCarousel({
+    navigation: true,
+    slideSpeed: 400,
+    paginationSpeed: 400,
+    responsive: {
+      0: {
+        items: 1 },
+
+      600: {
+        items: 2 },
+
+      1000: {
+        items: 4 } } });
+		
+		
+		
+		
+  var owl = $("#owl-slider-4");
+  owl.owlCarousel({
+    navigation: true,
+    slideSpeed: 400,
+    paginationSpeed: 400,
+    responsive: {
+      0: {
+        items: 1 },
+
+      600: {
+        items: 2 },
+
+      1000: {
+        items: 4 } } });
+
+
+
+});
+    </script>
+</body>
+</html>
